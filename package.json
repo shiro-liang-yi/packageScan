@@ -1,0 +1,41 @@
+{
+  "name": "packagescan",
+  "version": "1.0.0",
+  "description": "包装扫码工具",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "bugs": {
+    "email": "shuai.liang@udantech.com"
+  },
+  "config": {
+    "version": "0.0.0",
+    "clientCode": "PACKAGE_SCAN",
+    "loginType": "package"
+  },
+  "window": {
+    "title": "包装扫码工具测试版",
+    "frame": true,
+    "toolbar": false,
+    "resizable": false,
+    "width": 800,
+    "height": 580
+  },
+  "main": "./packageScan.html",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "element-ui": "^2.3.7",
+    "express": "~4.16.0",
+    "getmac": "^1.4.1",
+    "http-errors": "~npm install1.6.2",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.10",
+    "morgan": "~1.9.0",
+    "require": "^2.4.20",
+    "vue": "^2.5.16"
+  }
+}
