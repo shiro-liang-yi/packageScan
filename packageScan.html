@@ -214,6 +214,10 @@
             <el-input style="width: 220px;" v-model="form.orderId" @keyup.enter.native="getOrderId('orderId')"></el-input>&nbsp;&nbsp;&nbsp;
             <span class="my-span">{{form.nameZh}}</span><span class="my-span">{{form.projectNo}}</span><span class="my-span">{{form.projecNote}}</span>
         </el-form-item>
+		<audio controls height="100" width="100" style="display:none;" id="err">
+		  <source src="./error.mp3" type="audio/mpeg">
+		  <embed height="50" width="100" src="./error.mp3">
+		</audio>
         <!--放置一个隐藏表单项，存放订单编号响应信息中的orderId字段，用于后面的操作使用-->
         <el-form-item prop="od" v-show="false">
             <el-input v-model="form.od" type="hidden"></el-input>
@@ -247,7 +251,7 @@
             <el-button type="danger" size="large" @click="resetForm('form')">重置</el-button>
         </el-col>
         <el-col :span="12" :sm="3" style="padding-bottom:5px; width: 20.5%;">已扫码:{{submitArr.length}}&nbsp;&nbsp;版本号:{{version}}</el-col>
-    </el-row>
+	</el-row>
 
 
     <!--登录对话框-->
@@ -509,7 +513,9 @@
                         dom[2].focus();
                     } else {
                         alert(rsObj.rsmsg);//订单编号错误，给出提示，并重新定位到订单编号输入框
-                        dom[0].focus();
+						//alert(_self.err);
+						document.getElementById('err').play();
+					   dom[0].focus();
                     }
                 }).catch(function (error) {
                     alert(error);
