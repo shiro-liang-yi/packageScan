@@ -8,7 +8,7 @@ var http = require('http'); //通过http模块访问百度的接口
 			"lan":"zh",//zh表示中文
 			"ie":"UTF-8",//字符编码
 			"spd":4,//表示朗读的语速，9代表最快、1是最慢（撩妹请用2，绕口令请用9）
-			"text":"主人,扫码出错啦！！！"
+			"text":"主人,订单编号输入有误啦！！！"
 		});
 		var options = {
 			"method":"GET",
@@ -25,7 +25,7 @@ var http = require('http'); //通过http模块访问百度的接口
 				//这里用到了Buffer模块，大概意思就是把获取到的语音文件流存入到body里面，body是一个Buffer
 				var body = Buffer.concat(chunks);
 				//生成的mps文件存储的路径，文件名叫做 error.mp3
-				var filePath = path.normalize('err-table.mp3');
+				var filePath = path.normalize('err-orderId.mp3');
 				//fs模块写文件
 				fs.writeFileSync(filePath,body);
 			});

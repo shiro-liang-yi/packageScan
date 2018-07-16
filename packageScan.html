@@ -214,9 +214,13 @@
             <el-input style="width: 220px;" v-model="form.orderId" @keyup.enter.native="getOrderId('orderId')"></el-input>&nbsp;&nbsp;&nbsp;
             <span class="my-span">{{form.nameZh}}</span><span class="my-span">{{form.projectNo}}</span><span class="my-span">{{form.projecNote}}</span>
         </el-form-item>
-		<audio controls height="100" width="100" style="display:none;" id="err">
-		  <source src="./error.mp3" type="audio/mpeg">
-		  <embed height="50" width="100" src="./error.mp3">
+		<audio controls height="100" width="100" style="display:none;" id="err-orderId">
+		  <source src="./err-orderId.mp3" type="audio/mpeg">
+		  <embed height="50" width="100" src="./err-orderId.mp3">
+		</audio>
+		<audio controls height="100" width="100" style="display:none;" id="err-table">
+		  <source src="./err-table.mp3" type="audio/mpeg">
+		  <embed height="50" width="100" src="./err-table.mp3">
 		</audio>
         <!--放置一个隐藏表单项，存放订单编号响应信息中的orderId字段，用于后面的操作使用-->
         <el-form-item prop="od" v-show="false">
@@ -512,9 +516,9 @@
                         _self.form.projecNote = c;
                         dom[2].focus();
                     } else {
-                        alert(rsObj.rsmsg);//订单编号错误，给出提示，并重新定位到订单编号输入框
+                        //alert(rsObj.rsmsg);//订单编号错误，给出提示，并重新定位到订单编号输入框
 						//alert(_self.err);
-						document.getElementById('err').play();
+						document.getElementById('err-orderId').play();
 					   dom[0].focus();
                     }
                 }).catch(function (error) {
@@ -620,6 +624,7 @@
                                     }
                                     if (checkData) {
                                         _self.openMsg('error', '产品条码重复', '');
+										document.getElementById('err-table').play();
                                     } else {
 //                                        _self.tableData.unshift({lists: listStr, product_model: product_model});
                                         _self.tableData.unshift({lists: listStr, product_model: product_model});
@@ -634,7 +639,8 @@
                         });
                     }
                 } else {
-                    alert("订单编号输入有误,请重新输入");
+                    //alert("订单编号输入有误,请重新输入");
+					document.getElementById('err-orderId').play();
                     return false;
                 }
             },
